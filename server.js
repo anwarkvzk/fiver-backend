@@ -1,7 +1,13 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import userRoute  from"./routes/userRoute.js";
+import userRoute from "./routes/userRoute.js";
+import gigRoute from "./routes/gigRoute.js";
+import orderRoute from "./routes/orderRoute.js";
+import conversationRoute from "./routes/conversationRoute.js";
+import messageRoute from "./routes/messageRoute.js";
+import reviewRoute from "./routes/reviewRoute.js";
+import authRoute from "./routes/authRoute.js";
 
 const app = express();
 dotenv.config();
@@ -14,7 +20,16 @@ const connect = async () => {
     console.log(error);
   }
 };
-app.use("/api/user", userRoute);
+
+app.use(express.json());
+
+app.use("/api/auth", authRoute);
+app.use("/api/users", userRoute);
+app.use("/api/gigs", gigRoute);
+app.use("/api/orders", orderRoute);
+app.use("/api/conversations", conversationRoute);
+app.use("/api/messages", messageRoute);
+app.use("/api/reviews", reviewRoute);
 
 app.listen(8800, () => {
   connect();
