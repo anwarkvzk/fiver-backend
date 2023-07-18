@@ -1,20 +1,20 @@
-const mongoose = require("moongoose");
+import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const MessageSchema = new Schema(
   {
-   ConversationId:{
-    type: String,
-    required: true
-   },
-   userId:{
-    type: String,
-    required: true
-   },
-   desc:{
-    type: String,
-    required: true
-   },
+    ConversationId: {
+      type: String,
+      required: true,
+    },
+    userId: {
+      type: String,
+      required: true,
+    },
+    desc: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,
@@ -22,3 +22,5 @@ const MessageSchema = new Schema(
 );
 
 export default mongoose.model("Message", MessageSchema);
+// const Message = mongoose.model("Message", MessageSchema);
+// module.exports = Message;
